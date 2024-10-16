@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body method =="post">
+    <h1>My Blog</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                <p>{{ post.published_date }}</p>
+                <p>{{ post.content|slice:":200" }}...</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
